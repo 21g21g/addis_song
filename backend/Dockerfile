@@ -1,4 +1,4 @@
-FROM node:20.16.0
+FROM node:20-alpine
 #This sets the working directory inside the Docker container to /app
 WORKDIR /app
 #This command copies the package.json file from your local machine (where the Docker build is being executed) to the /app directory inside the Docker container.

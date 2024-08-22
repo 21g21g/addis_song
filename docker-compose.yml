@@ -35,6 +35,7 @@ services:
     - "host.docker.internal:host-gateway"
     restart: always
     environment:
+       - PORT=5000
        - MONGODB_URI=mongodb://root:password@mongo:27017/songs?authSource=admin
     depends_on:
       - mongo
