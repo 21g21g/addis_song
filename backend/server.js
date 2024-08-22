@@ -17,21 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'http://localhost:3000',
   }));
-//enviroment variables
-// const url = process.env.MONGODB_URI;
-// const port=process.env.PORT||3000
-//main route middlewires
+
 app.use("/api/songs",songRoutes)
 app.use("/api/stastics",stasticsRoute)
-//connect mongodb and listen to server
-// mongoose.connect(url).then(()=>{
-//     console.log( "mongodb is connected successfully");
-//     app.listen(port,()=>{
-//         console.log(`server started on port ${port}`);
-//     });
-    
-//    })   
-//to conncet mongodb mongodb://root:password@localhost:27017/
+
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 5000;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
