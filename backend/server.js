@@ -21,7 +21,7 @@ app.use(cors({
 app.use("/api/songs",songRoutes)
 app.use("/api/stastics",stasticsRoute)
 
-const uri = process.env.MONGODB_URI ||'mongodb://localhost:27017/songs';
+const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 3000;
 mongoose.connect(uri)
     .then(() => {
