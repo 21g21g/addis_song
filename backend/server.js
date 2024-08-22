@@ -23,7 +23,7 @@ app.use("/api/stastics",stasticsRoute)
 
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 3000;
-mongoose.connect(uri, { useNewUrlParser: false, useUnifiedTopology: false })
+mongoose.connect(uri)
     .then(() => {
         console.log("MongoDB connected successfully");
         app.listen(port, () => {
