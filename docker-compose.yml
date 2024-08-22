@@ -1,0 +1,54 @@
+
+
+
+version: '3'
+
+services:
+
+  # Frontend Service (React)
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+      #this volume is used inorder to desplay the last updates in the browsers
+    volumes:
+      - ./frontend:/app
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    environment:
+      - REACT_APP_API_URL= http://backend:5000
+    depends_on:
+      - backend
+    
+  
+# Backend Service (Express.js)
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app 
+     
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    restart: always
+    environment:
+       - MONGODB_URI=mongodb://root:password@mongo:27017/songs?authSource=admin
+    depends_on:
+      - mongo
+  # MongoDB Service
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+volumes:
+  mongo-data:
