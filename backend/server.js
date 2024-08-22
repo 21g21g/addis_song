@@ -22,8 +22,8 @@ app.use("/api/songs",songRoutes)
 app.use("/api/stastics",stasticsRoute)
 
 const uri = process.env.MONGODB_URI;
-const port = process.env.PORT || 5000;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+const port = process.env.PORT || 3000;
+mongoose.connect(uri, { useNewUrlParser: false, useUnifiedTopology: false })
     .then(() => {
         console.log("MongoDB connected successfully");
         app.listen(port, () => {
