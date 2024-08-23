@@ -1,7 +1,6 @@
 const Songs=require("../models/songs");
 const cloudinary=require("../utils/cloudinary")
 exports.createSongs = async (req, res) => {
-    console.log("Request Body:", req.body); // Log the body to debug
 
     const { title, artist, album, genre } = req.body;
 
