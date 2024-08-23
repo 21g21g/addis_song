@@ -11,7 +11,7 @@ function* songsFetch():any{
     //in artis page show all artists in grid and whe i click it it goes to artists detail page. and place about artist.
     //my expectation is place all albums are exither hipup,pop or etc not songs.
     try{
-    const response=yield call(axios.get,"http://localhost:5000/api/songs/getAllsong");
+    const response=yield call(axios.get,"https://addis-song-deployment.onrender.com/api/songs/getAllsong");
     // console.log(response.data)
     yield put(songSliceActions.songSuccess(response.data))
     
@@ -26,7 +26,7 @@ function* songsFetch():any{
 
 function* songCreate(action: PayloadAction<any>): any {
   try {
-    const response = yield call(axios.post, "http://localhost:5000/api/songs/createSongs", action.payload, {
+    const response = yield call(axios.post, "https://addis-song-deployment.onrender.com/api/songs/createSongs", action.payload, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,7 +41,7 @@ function* songCreate(action: PayloadAction<any>): any {
 function* songUpdate(action:PayloadAction<any>):any{
     const {id,...updateData}=action.payload
   try{
-    const response=yield call(axios.put,`http://localhost:5000/api/songs/${id}`,updateData,{
+    const response=yield call(axios.put,`https://addis-song-deployment.onrender.com/api/songs/${id}`,updateData,{
       headers:{
         "Content-Type":"application/json"
       }
@@ -60,7 +60,7 @@ function* songUpdate(action:PayloadAction<any>):any{
 function* songDelete(action:PayloadAction<any>):any{
   const id=action.payload
   try{
-       const response=yield call(axios.delete,`http://localhost:5000/api/songs/${id}`)
+       const response=yield call(axios.delete,`https://addis-song-deployment.onrender.com/api/songs/${id}`)
        yield put(songSliceActions.songDeletingSuccess("you delete song succesfully"))
        yield put(songSliceActions.songFetching());
 
@@ -72,7 +72,7 @@ function* songDelete(action:PayloadAction<any>):any{
 function* fetchStastics():any{
   try{
 
-    const response=yield call(axios.get,"http://localhost:5000/api/stastics/numberSong")
+    const response=yield call(axios.get,"https://addis-song-deployment.onrender.com/api/stastics/numberSong")
     yield put(statisticsSliceActions.fetchStatisticsSuccess(response.data))
 
   }catch(error:any){
@@ -81,7 +81,7 @@ function* fetchStastics():any{
 }
 function* fetchGenres():any{
   try{
-      const response=yield call(axios.get,"http://localhost:5000/api/stastics/totalSongGenres")
+      const response=yield call(axios.get,"https://addis-song-deployment.onrender.com/api/stastics/totalSongGenres")
       yield put(statisticsSliceActions.fetchGenreCountsSuccess(response.data))
   }
   catch(error:any){
@@ -91,7 +91,7 @@ function* fetchGenres():any{
 
 function* fetchResponse():any{
   try{
-    const response=yield call(axios.get,"http://localhost:5000/api/stastics/totalSonginAlbum")
+    const response=yield call(axios.get,"https://addis-song-deployment.onrender.com/api/stastics/totalSonginAlbum")
     yield put(statisticsSliceActions.fetchResponseDataSuccess(response.data))
 
   }catch(error:any){

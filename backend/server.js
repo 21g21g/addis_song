@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 //avoid conflic for the back and frontend
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://addisfrontend-jfcdhp4zr-21g21gs-projects.vercel.app',
   }));
 
 app.use("/api/songs",songRoutes)
